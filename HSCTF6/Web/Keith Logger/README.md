@@ -18,7 +18,7 @@ A Google Chrome extension? As I was lazy to install Chrome on my VM, I'm going t
 
 ![](./2.png)
 
-I understand that this was not a forensics question, but I am still going to run ```foremost``` on this. The output was a single ZIP file. If we unzipped it, we get the mentioned files. The ```jquery``` file and the ```manifest.json``` wasn't important but ```content.js``` does. 
+I understand that this was not a forensics question, but I am still going to run ```foremost``` on this. The output was a single ZIP file. If we unzipped it, we get the mentioned files. The ```jquery``` file and the ```manifest.json``` wasn't important but ```content.js``` is. 
 
 ![](./3.png)
 
@@ -30,7 +30,7 @@ We see a username, a password and an endpoint related to MongoDB? I have never r
 
 ![](./5.png)
 
-So it is related to MongoDB but I can't access via HTTP ? After some research, it seems I need a MongoDB client called ```mongo``` to access it. Since Kali doesn't have it, I had to install it: ```apt-get install mongodb-org-shell```. Now, I can run ```mongo```.
+So there is indeed MongoDB service but I can't access it via HTTP ? After some research, it seems I need a MongoDB client called ```mongo``` to access it. Since Kali doesn't have it, I had to install it: ```apt-get install mongodb-org-shell```. Now, I can run ```mongo```.
 
 ![](./6.png)
 
