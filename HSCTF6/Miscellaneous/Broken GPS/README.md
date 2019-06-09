@@ -1,4 +1,4 @@
-# Real Reversal
+# Broken GPS
 
 Written by: Disha and Shray
 
@@ -25,8 +25,6 @@ According to the question, for each file there are, we need to keep track of 2 l
 ```python
 import os
 
-output = ""
-
 # Mapping direction to (x,y) changes
 directions = {
     "south": (0, -1),
@@ -42,7 +40,7 @@ directions = {
 # Return updated coordinates if moved the correct direction
 def correct_move(coor, direction):
 	coor[0] += directions[direction][0]
-    	coor[1] += directions[direction][1]
+    coor[1] += directions[direction][1]
 	return coor
 
 # Return updated coordinates if follow GPS
@@ -55,22 +53,25 @@ def wrong_move(coor, direction):
 def dist(coor1, coor2):
 	return ((coor1[0]-coor2[0])**2 + (coor1[1]-coor2[1])**2)**0.5
 
+def main():
+    output = ""
+    for idx in range(1,13):
+        filename = str(idx) + ".txt"
+        correct = [0, 0]
+        gps = [0, 0]
+        with open(os.path.join("input", filename), "r") as f:
+            lines = f.readlines()
+            for line in lines[1:]:
+                direction = line.strip()
+                correct = correct_move(correct, direction)
+                gps = wrong_move(gps, direction)
+        
+        flag = int(round(dist(correct, gps)))%26
+        output += chr(flag + ord('a'))
 
-for idx in range(1,13):
-    filename = str(idx) + ".txt"
-    correct = [0, 0]
-    gps = [0, 0]
-    with open(os.path.join("input", filename), "r") as f:
-        lines = f.readlines()
-        for line in lines[1:]:
-            direction = line.strip()
-	    correct = correct_move(correct, direction)
-            gps = wrong_move(gps, direction)
-    
-    flag = int(round(dist(correct, gps)))%26
-    output += chr(flag + ord('a'))
+    print output
 
-print output
+main()
 ```
 
 We got ```garminesuckz```.
